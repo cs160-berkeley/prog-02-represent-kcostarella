@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">represent</string>
+    <string name="title_activity_congress_wear">CongressWear</string>
+    <string name="title_1"> Barbara Lee\n D </string>
+    <string name="title_2"> Barbara Boxer\n D </string>
+    <string name="title_3"> Dianne Feinstein\n D</string>
+    <string name="title_4"> 2012 Presidential Vote</string>
+    <string name="body_4"> State A County B Obama xx Romney yy </string>
+    <string name="body_1"> Blah blah blah... </string>
+    <string name="body_2"> ... and blah blah blah </string>
+    <string name="body_3"> YADDA YAA </string>
+    <string name="body_5"> STATE C COUNTY D Obama ww Romney zz </string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+</resources>
