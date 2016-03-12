@@ -1,17 +1,4 @@
-<resources>
-    <string name="app_name">Represent</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_congress">CongressActivity</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="barbara_lee">Representative Barbara Lee, Democrat</string>
-    <string name="barbara_boxer">Senator Barbara Boxer, Democrat</string>
-    <string name="dianne_feinstein">Senator Dianne Feinstein, Democrat</string>
-    <string name="title_activity_info">Detailed View</string>
-    <string name="large_text"> hello </string>
-    <string name="google_app_id"> api-project-386095837425 </string>
-    <string name="title_activity_test">test</string>
-    <string name="voteJSON">[
+[
   {
     "state-postal": "AK",
     "county-name": "Alaska",
@@ -36669,5 +36656,4 @@
     "romney-vote": 5751,
     "romney-percentage": 76.7
   }
-]</string>
-</resources>
+]

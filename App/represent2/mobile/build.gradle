@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
     compileSdkVersion 23
@@ -10,6 +25,8 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled = true
+
     }
     buildTypes {
         release {
@@ -17,6 +34,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
 dependencies {
@@ -24,4 +42,11 @@ dependencies {
     wearApp project(':wear')
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.android.support:design:23.2.0'
+    compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.google.android.gms:play-services-basement:8.1.0'
+    compile('com.twitter.sdk.android:twitter:1.13.0@aar') {
+        transitive = true;
+
+    }
 }

@@ -29,6 +29,7 @@ public class WatchListenerService extends WearableListenerService {
         if( messageEvent.getPath().equalsIgnoreCase( START ) ) {
             String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
             Intent intent = new Intent(this, CongressWear.class );
+            intent.putExtra("DATA",value);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //you need to add this flag since you're starting a new activity from a service
             intent.putExtra("SHUFFLE", false);

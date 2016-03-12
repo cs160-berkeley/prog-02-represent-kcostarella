@@ -12,8 +12,8 @@ import android.support.wearable.view.FragmentGridPagerAdapter;
  * Created by kcostarella on 3/1/16.
  */
 public class RepresentGridPagerAdapter extends FragmentGridPagerAdapter {
-    private final Context mContext;
-    private final Page[][] PAGES;
+    protected final Context mContext;
+    protected final Page[][] PAGES;
 
     public RepresentGridPagerAdapter(Context ctx, FragmentManager fm) {
         super(fm);
@@ -22,37 +22,33 @@ public class RepresentGridPagerAdapter extends FragmentGridPagerAdapter {
     }
 
 
-    private static class Page {
-        int titleRes;
-        int textRes;
+    protected static class Page {
+        String titleRes;
+        String bodyRes = "";
         int iconRes;
         int code;
     }
 
 
-    private Page[][] getPages()
+    public Page[][] getPages()
     {
         Page page1 = new Page();
-        page1.titleRes = R.string.title_1;
-        page1.textRes = R.string.body_1;
+        page1.titleRes = "blah";
         page1.iconRes = R.drawable.barbara_lee;
         page1.code = 0;
 
         Page page2 = new Page();
-        page2.titleRes = R.string.title_2;
-        page2.textRes = R.string.body_2;
+        page2.titleRes = "blah";
         page2.iconRes = R.drawable.barbara_boxer;
         page2.code = 1;
 
         Page page3 = new Page();
-        page3.titleRes = R.string.title_3;
-        page3.textRes = R.string.body_3;
+        page3.titleRes = "blah";
         page3.iconRes = R.drawable.dianne_feinstein;
         page3.code = 2;
 
         Page page4 = new Page();
-        page4.titleRes = R.string.title_4;
-        page4.textRes = R.string.body_4;
+        page4.titleRes = "SuperBlah";
 
         return new Page[][]{new Page[]{page1, page2, page3}, new Page[]{page4}};
     }
@@ -61,8 +57,8 @@ public class RepresentGridPagerAdapter extends FragmentGridPagerAdapter {
     public Fragment getFragment(int row, int col) {
 
         final Page page = PAGES[row][col];
-        String title = page.titleRes != 0 ? mContext.getString(page.titleRes) : null;
-        String text = page.textRes != 0 ? mContext.getString(page.textRes) : null;
+        String title = page.titleRes.equals("") ? page.titleRes : null;
+        String body = page.bodyRes.equals("") ? page.bodyRes : null;
         //CardFragment fragment = CardFragment.create(title,text,page.iconRes);
 
         if (row == 0) {
@@ -79,7 +75,7 @@ public class RepresentGridPagerAdapter extends FragmentGridPagerAdapter {
         }
 
         else {
-            CardFragment fragment = CardFragment.create(title, text, page.iconRes);
+            CardFragment fragment = CardFragment.create(page.titleRes, page.bodyRes, page.iconRes);
             return fragment;
         }
 
@@ -91,17 +87,6 @@ public class RepresentGridPagerAdapter extends FragmentGridPagerAdapter {
 
     }
 
-    private int getCode(int androidSucks) {
-        switch (androidSucks) {
-            case R.drawable.barbara_lee:
-                return 0;
-            case R.drawable.barbara_boxer:
-                return 1;
-            case R.drawable.dianne_feinstein:
-                return 2;
-        }
-        return 3;
-    }
 
 
     //obtain background color from the row
@@ -114,7 +99,8 @@ public class RepresentGridPagerAdapter extends FragmentGridPagerAdapter {
     @Override
     public Drawable getBackgroundForPage(int row, int column) {
         if (row == 0) {
-            return mContext.getResources().getDrawable(PAGES[row][column].iconRes, null);
+            //return mContext.getResources().getDrawable(R.drawable.open_on_phone, null);
+            return super.getBackgroundForPage(row,column);
         }
         return super.getBackgroundForPage(row, column);
     }

@@ -17,13 +17,13 @@ public class ActionFragment extends Fragment implements View.OnClickListener {
     private CircledImageView vIcon;
     private TextView vLabel;
 
-    public static ActionFragment create(int iconResId, int labelResId, Listener listener) {
+    public static ActionFragment create(int iconResId, String labelResId, Listener listener) {
         //mListener = listener;
         ActionFragment fragment = new ActionFragment();
         fragment.mListener = listener;
         Bundle args = new Bundle();
         args.putInt("ICON", iconResId);
-        args.putInt("LABEL", labelResId);
+        args.putString("LABEL", labelResId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -39,7 +39,7 @@ public class ActionFragment extends Fragment implements View.OnClickListener {
         vIcon = (CircledImageView) view.findViewById(R.id.icon);
         vLabel = (TextView) view.findViewById(R.id.label);
         vIcon.setImageResource(getArguments().getInt("ICON"));
-        vLabel.setText(getArguments().getInt("LABEL"));
+        vLabel.setText(getArguments().getString("LABEL"));
         view.setOnClickListener(this);
     }
 
